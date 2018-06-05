@@ -48,6 +48,7 @@ module CollectiveIdea #:nodoc:
               unless leaf?
                 record = self.class.human_attribute_name(:children).downcase
                 errors.add(:base, :"restrict_dependent_destroy.#{Rails::VERSION::MAJOR < 5 ? 'many' : 'has_many'}", record: record)
+                throw :abort
                 return false
               end
               return true
